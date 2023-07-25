@@ -6,7 +6,7 @@ on:
     types: ["opened", "edited", "reopened"]
 
 env:
-  MASTER_BRANCH: "master"
+  MASTER_BRANCH: master
   TESTING_BRANCHES: ("testing/incy" "testing/kiwi")
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
