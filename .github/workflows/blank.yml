@@ -13,7 +13,7 @@ jobs:
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: "aaa"
-    if: ${{ "123" == 'Monday123' }}
+    if: ${{ github.base_ref == 'Monday123' }}
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
