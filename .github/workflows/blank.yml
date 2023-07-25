@@ -13,7 +13,7 @@ jobs:
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: "aaa"
-    if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
+    if: contains(github.event.pull_request.labels.*.name, 'file-client-test')
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
