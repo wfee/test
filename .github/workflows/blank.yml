@@ -5,20 +5,20 @@ on:
     branches: ["testing/incy", "testing/kiwi", "master"]
     types: ["opened", "edited", "reopened"]
 
+env:
+  DAY_OF_WEEK: Monday123
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   check_pr_title_testing_series:
-    env:
-      DAY_OF_WEEK: Monday
     # The type of runner that the job will run on
     name: "aaa"
-    if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
     steps:
-      - run: echo "check testing/incy"
+      - if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
           regexp: "aaa" # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
