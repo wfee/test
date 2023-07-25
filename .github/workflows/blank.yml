@@ -2,11 +2,11 @@ name: Check Pull Request Title
 # This is a basic workflow to help you get started with Actions
 on:
   pull_request:
-    branches: ["testing/incy", "testing/kiwi", "main"]
+    branches: ["testing/incy", "testing/kiwi", "master"]
     types: ["opened", "edited", "reopened"]
 
 env:
-  MASTER_BRANCH: "main"
+  MASTER_BRANCH: "master"
   TESTING_BRANCHES: ("testing/incy" "testing/kiwi")
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
