@@ -14,26 +14,12 @@ jobs:
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: aaa
-    if: env.TESTING_BRANCHES == github.base_ref
+    if: ${{ env.MASTER_BRANCH == 'master' }}
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
     steps:
       - run: echo "check testing/incy"
-      - uses: Slashgear/action-check-pr-title@v4.3.0
-        with:
-          regexp: ${{ vars.TEAM_MAOTAI_PR_TITLE_REGEX }} # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
-          
-          
-  check_pr_title_master:
-    # The type of runner that the job will run on
-    name: bbb
-    if: github.base_ref == env.MASTER_BRANCH
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    # echo ${{github.event.pull_request.title}}
-    steps:
-      - run: echo "check main"
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
           regexp: ${{ vars.TEAM_MAOTAI_PR_TITLE_REGEX }} # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
