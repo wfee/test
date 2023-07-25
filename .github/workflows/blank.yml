@@ -6,14 +6,14 @@ on:
     types: ["opened", "edited", "reopened"]
 
 env:
-  MASTER_BRANCH: master
+  MASTER_BRANCH: Monday
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: "aaa"
-    if: ${{ env.MASTER_BRANCH == 'master' }}
+    if: ${{ env.MASTER_BRANCH == 'Monday' }}
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
