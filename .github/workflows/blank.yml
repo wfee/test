@@ -14,7 +14,7 @@ jobs:
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: aaa
-    if: ${{ env.TESTING_BRANCHES == github.base_ref) }}
+    if: env.TESTING_BRANCHES == github.base_ref
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
@@ -28,7 +28,7 @@ jobs:
   check_pr_title_master:
     # The type of runner that the job will run on
     name: bbb
-    if: ${{ github.base_ref == env.MASTER_BRANCH }}
+    if: github.base_ref == env.MASTER_BRANCH
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
