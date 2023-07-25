@@ -21,4 +21,4 @@ jobs:
       - run: echo "check testing/incy"
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
-          regexp: ${{ vars.TEAM_MAOTAI_PR_TITLE_REGEX }} # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
+          regexp: "\d" # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
