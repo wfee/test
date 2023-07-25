@@ -18,7 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
     steps:
-      - if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
+      - if: ${{ vars.MASTER_BRANCH == 'Monday123' }}
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
           regexp: "aaa" # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
