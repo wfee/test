@@ -14,7 +14,7 @@ jobs:
   check_pr_title_testing_series:
     # The type of runner that the job will run on
     name: Check ${{ github.base_ref }} Pull Request Title
-    if: ${{ contains(fromJSON(vars.TESTING_BRANCHESE || '["a", "b", "c"]'), 'b') }}
+    if: ${{ contains(fromJSON(vars.TESTING_BRANCHESE || '["a", "b", "c"]'), 'ABC') }}
     #if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
