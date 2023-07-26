@@ -12,7 +12,7 @@ env:
 jobs:
   Check_Pull_Request_Title:
     name: Check Pull Request Title
-    if: ${{ contains(("testing/incy" "testing/kiwi"), github.base_ref) || ( github.base_ref == 'master' && !contains(("testing/incy" "testing/kiwi"), github.head_ref) ) }}
+    if: ${{ contains(fromJSON('["testing/incy", "testing/kiwi"]'), github.base_ref) || ( github.base_ref == 'master' && !contains(fromJSON('["testing/incy", "testing/kiwi"]'), github.head_ref) ) }}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ ( github.base_ref == (vars.MASTER_BRANCH || 'master') && !contains(fromJSON( (vars.TESTING_BRANCHES  || '["testing/incy", "testing/kiwi"]' ) ), github.head_ref) ) }}
