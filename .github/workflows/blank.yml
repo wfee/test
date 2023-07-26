@@ -12,7 +12,8 @@ env:
 jobs:
   Check_Pull_Request_Title:
     name: Check Pull Request Title
-    if: ${{ ( contains(fromJSON(vars.TESTING_BRANCHES || '["testing/incy", "testing/kiwi"]'), github.base_ref) ) || ( github.base_ref == (vars.MASTER_BRANCH || 'master') && !contains(fromJSON( (vars.TESTING_BRANCHES  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) ) }}
+    #if: ${{ contains(fromJSON('["testing/incy", "testing/kiwi"]'), github.base_ref) || ( github.base_ref == 'master' && !contains(fromJSON('["testing/incy", "testing/kiwi"]'), github.head_ref) ) }}
+    #if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,8 +24,7 @@ jobs:
       - name: Check Pull Request Title
         uses: ./actions/tool/github-pull-request-title-check
         with:
-          title: ${{ github.event.pull_request.title }}
-
+          need-check-rules: '[{"from":".*", "to":"testing/.*"}, {"from":"^(?!testing/)", "to":"master"}]'
 
     # This workflow contains a single job called "build"
   #check_pr_title_testing_series:
