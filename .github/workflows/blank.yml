@@ -18,7 +18,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: wfee/actions
-          token: ${{ secrets.RESTRICTED_REPO_TOKEN }}
           path: actions
           ref: feat/action-check-pr-gitle
       - name: Check Pull Request Title
