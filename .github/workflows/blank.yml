@@ -10,17 +10,41 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  check_pr_title_testing_series:
+
+  name: Check Pull Request Title
+
+  on:
+    pull_request:
+      branches: [ "testing/incy", "testing/kiwi", "master" ]
+      types: [ "opened", "edited", "reopened" ]
+
+  jobs:
+    Check_Pull_Request_Title:
+      name: Check Pull Request Title
+      if: ${{ ( contains(fromJSON(vars.TESTING_BRANCHES || '["testing/incy", "testing/kiwi"]'), github.base_ref) ) || ( github.base_ref == (vars.MASTER_BRANCH || 'master') && !contains(fromJSON( (vars.TESTING_BRANCHES  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) ) }}
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            repository: wfee/actions
+            token: ${{ secrets.RESTRICTED_REPO_TOKEN }}
+            path: actions
+            ref: feat/action-check-pr-gitle
+        - name: Check Pull Request Title
+          uses: ./actions/tool/github-pull-request-title-check
+
+
+    # This workflow contains a single job called "build"
+  #check_pr_title_testing_series:
     # The type of runner that the job will run on
-    name: Check ${{ github.base_ref }} Pull Request Title
+   # name: Check ${{ github.base_ref }} Pull Request Title
     #if: ${{ contains(fromJSON(vars.TESTING_BRANCHESE || '["a", "b", "c"]'), 'ABC') }}
     #if: ${{ env.DAY_OF_WEEK == 'Monday123' }}
-    if: ${{ github.base_ref == (vars.MASTER_BRANCHaaa || 'master1') && !contains(fromJSON( (vars.TESTING_BRANCHESaaa  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) }}
-    runs-on: ubuntu-latest
+   # if: ${{ github.base_ref == (vars.MASTER_BRANCHaaa || 'master1') && !contains(fromJSON( (vars.TESTING_BRANCHESaaa  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) }}
+   # runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     # echo ${{github.event.pull_request.title}}
-    steps:
-      - uses: Slashgear/action-check-pr-title@v4.3.0
-        with:
-          regexp: "aaa" # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
+   # steps:
+   #   - uses: Slashgear/action-check-pr-title@v4.3.0
+   #     with:
+    #      regexp: "aaa" # Regex the title should match.^(?:[A-Z]{3,5}-\\d{1,9}|refactor|Revert|docs|sentry|test|ci|build|style|release|perf).*$
