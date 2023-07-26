@@ -18,13 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: wfee/actions
+          repository: wfee/automizely-actions
           path: actions
           ref: feat/action-check-pr-gitle
       - name: Check Pull Request Title
-        uses: ./actions/tool/github-pull-request-title-check
+        uses: ./automizely-actions/tool/github-pull-request-title-check
         with:
-          need-check-rules: '[{"from":".*", "to":"testing/.*"}, {"from":"^(?!testing/)", "to":"master"}]'
+          check_rules: '[{"from":".*", "to":"testing/.*"}, {"from":"^(?!testing/)", "to":"master"}]'
 
     # This workflow contains a single job called "build"
   #check_pr_title_testing_series:
