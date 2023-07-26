@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: wfee/automizely-actions
-          path: actions
+          path: automizely-actions
           ref: feat/action-check-pr-gitle
       - name: Check Pull Request Title
         uses: ./automizely-actions/tool/github-pull-request-title-check
