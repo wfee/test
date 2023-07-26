@@ -24,7 +24,7 @@ jobs:
       - name: Check Pull Request Title
         uses: ./actions/tool/github-pull-request-title-check
         with:
-          need-check-branches: [value1, value2, value3]
+          need-check-branches: '[value1, value2, value3]'
 
 
     # This workflow contains a single job called "build"
