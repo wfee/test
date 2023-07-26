@@ -10,7 +10,6 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Check_Pull_Request_Title:
     name: Check Pull Request Title
     if: ${{ ( contains(fromJSON(vars.TESTING_BRANCHES || '["testing/incy", "testing/kiwi"]'), github.base_ref) ) || ( github.base_ref == (vars.MASTER_BRANCH || 'master') && !contains(fromJSON( (vars.TESTING_BRANCHES  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) ) }}
     runs-on: ubuntu-latest
