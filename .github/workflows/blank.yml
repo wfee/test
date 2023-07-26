@@ -20,6 +20,8 @@ jobs:
           repository: wfee/actions
           path: actions
           ref: feat/action-check-pr-gitle
+      - name:
+          run: echo ${{ github.event.payload.pull_request.title }}
       - name: Check Pull Request Title
         uses: ./actions/tool/github-pull-request-title-check
         with:
