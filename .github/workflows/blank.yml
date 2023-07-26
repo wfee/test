@@ -21,11 +21,11 @@ jobs:
           path: actions
           ref: feat/action-check-pr-gitle
       - name:
-          run: echo ${{ github.event.payload.pull_request.title }}
+          run: echo ${{ github.event.pull_request.title }}
       - name: Check Pull Request Title
         uses: ./actions/tool/github-pull-request-title-check
         with:
-          title: ${{ github.event.payload.pull_request.title }}
+          title: ${{ github.event.pull_request.title }}
 
 
     # This workflow contains a single job called "build"
