@@ -11,7 +11,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Check_Pull_Request_Title:
-    name: Check Pull Request Title ${{ github.event.pull_request.action }} aaa
+    name: Check Pull Request Title
     if: ${{ ( contains(fromJSON(vars.TESTING_BRANCHES || '["testing/incy", "testing/kiwi"]'), github.base_ref) ) || ( github.base_ref == (vars.MASTER_BRANCH || 'master') && !contains(fromJSON( (vars.TESTING_BRANCHES  || '["testing/incy", "testing/kiwi"]' ) ), github.base_ref) ) }}
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +20,6 @@ jobs:
           repository: wfee/actions
           path: actions
           ref: feat/action-check-pr-gitle
-      - run: echo ${{ github.event.pull_request.title }}
       - name: Check Pull Request Title
         uses: ./actions/tool/github-pull-request-title-check
         with:
