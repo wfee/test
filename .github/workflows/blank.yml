@@ -3,6 +3,7 @@ name: Check Pull Request Title
 on:
   pull_request:
     branches: ["testing/incy", "testing/kiwi", "master"]
+    types: ["opened", "edited", "reopened", "synchronize"]
 
 env:
   DAY_OF_WEEK: Monday123
